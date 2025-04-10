@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.repository.VocabMapper">
+	<!--Search All Items-->
+	<select id="selectAll" resultType="com.example.demo.entity.Vocab">
+		SELECT * FROM wordsList
+	</select>
+	<!-- Search 1 item -->
+	<select id="selectById" resultType="com.example.demo.entity.Vocab">
+		SELECT * FROM wordsList WHERE id=#{id}
+	</select>
+	<!-- Resister a new word -->
+	<insert id="insert">
+		INSERT INTO wordsList(word,pronunciation,partOfSpeech,translation,created_at)
+		VALUES
+		(#{word},#{pronunciation},#{partOfSpeech},#{translation},CURRENT_TIMESTAMP)
+	</insert>
+	<!-- Update -->
+	<update id="update">
+		UPDATE wordsList SET word= #{word}, pronunciation= #{pronunciation}, partOfSpeech= #{partOfSpeech}, translation=#{translation}, updated_at= CURRENT_TIMESTAMP
+		WHERE id= #{id}
+	</update>
+	<!-- Delete -->
+	<delete id="delete">
+		DELETE FROM wordsList WHERE id= #{id}
+	</delete>
+	
+	
+</mapper>
