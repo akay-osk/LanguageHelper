@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Vocab Detail</title>
+</head>
+<body>
+	<h2>Vocab Detail</h2>
+	<table border="1">
+		<tr>
+			<th>ID</th>
+			<td th:text="${vocab.id}"></td>
+		</tr>
+		<tr>
+			<th>Word</th>
+			<td th:text="${vocab.word}"></td>
+		</tr>
+		<tr>
+			<th>Resistered Date</th>
+			<td th:text="${vocab.createdAt.format(
+				T(java.time.format.DateTimeFormatter).ofPattern('yyyy/MM/dd HH:mm:ss'))}">
+			</td>
+		</tr>
+		<tr>
+			<th>Updated Date</th>
+			<td th:text="${vocab.updatedAt.format(
+				T(java.time.format.DateTimeFormatter).ofPattern('yyyy/MM/dd HH:mm:ss'))}">
+			</td>
+		</tr>
+		
+	</table>
+	<a th:href="@{/vocabs}">Go Back to the List</a>
+
+</body>
+</html>

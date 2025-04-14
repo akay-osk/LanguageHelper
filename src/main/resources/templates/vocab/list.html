@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Vocab List</title>
+</head>
+<body>
+	<h2>Vocab List</h2>
+	<!--Flash message-->
+	<p th:if="${errorMessage}"
+	th:text="${errorMessage}" style="color:red";>
+	ERROR MESSAGE
+	</p>
+	<table border="1" width="300">
+		<thread>
+			<tr>
+				<th>ID</th>
+				<th>Word</th>
+				<th>Part of Speech</th>
+				<th>Pronunciation</th>
+				<th>Translation</th>
+			</tr>
+		</thread>
+		<tbody>
+			<tr th:each="vocab: ${vocabs}">
+				<td th:text="${vocab.id}"></td>
+				<td th:text="${vocab.word}"></td>
+				<td th:text="${vocab.partOfSpeech}"></td>
+				<td th:text="${vocab.pronunciation}"></td>
+				<td th:text="${vocab.translation}"></td>
+				<td>
+					<a th:href="@{/vocabs/{id}(id=${vocab.id})}">
+						Detail
+					</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+</body>
+</html>
